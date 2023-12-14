@@ -16,6 +16,7 @@
 
     <activity
         android:name=".GetAddress"
+        android:configChanges="orientation|screenSize"
         android:exported="true"
         >
         <intent-filter>
