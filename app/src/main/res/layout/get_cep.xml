@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <EditText
+        android:id="@+id/editTextCep"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="80dp"
+        android:hint="Digite o seu cep"
+        android:paddingLeft="8dp"
+        android:inputType="number"
+        android:textColor="#3C3939"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mensagemDeErro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="O cep informado não foi encontrado"
+        android:visibility="invisible"
+        android:layout_marginLeft="57dp"
+        android:textColor="#FF0000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCep"
+         />
+
+    <Button
+        android:id="@+id/botao"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/register_button_background"
+        android:hint="confirmar"
+        android:textColorHint="#ffffff"
+        android:textSize="20sp"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCep" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="16dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botao">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp">
+
+
+        <TextView
+            android:id="@+id/rua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rua"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+             />
+
+        <TextView
+            android:id="@+id/bairro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="bairro"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toEndOf="@+id/rua"
+             />
+
+            <TextView
+                android:id="@+id/cidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cidade"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                app:layout_constraintTop_toBottomOf="@+id/rua" />
+
+            <TextView
+                android:id="@+id/cep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cep"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/bairro"
+                app:layout_constraintStart_toEndOf="@+id/cidade" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
