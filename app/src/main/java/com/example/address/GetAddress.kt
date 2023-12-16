@@ -32,35 +32,44 @@ class GetAddress: AppCompatActivity() {
             var cep = binding.editTextCep.text.toString()
             var address : Address?
             val scope = MainScope()
-            scope.launch {
-                withContext(Dispatchers.IO) {
-                     address =
-                         AddressService(RetrofitHelper().addressApi()).findAddressByCep(cep)
+
+                scope.launch {
+                    try {
+                    withContext(Dispatchers.IO) {
+                        address =
+                            AddressService(RetrofitHelper().addressApi()).findAddressByCep(cep)
+                    }
+                    if (address != null) {
+                        binding.rua.setText(address?.rua)
+                        binding.bairro.setText(" - ${address?.bairro}")
+                        binding.cidade.setText("${address?.cidade}/${address?.estado}")
+                        binding.cep.setText(" - ${address?.cep}")
+                        binding.mensagemDeErro.visibility = View.INVISIBLE
+                        binding.cardView.visibility = View.VISIBLE
+
+
+                    } else {
+                        binding.mensagemDeErro.visibility = View.VISIBLE
+                    }
+                    }catch (erro: Exception){
+                        print(erro)
                 }
-                if(address != null) {
-                    binding.rua.setText(address?.rua)
-                    binding.bairro.setText(" - ${address?.bairro}")
-                    binding.cidade.setText("${address?.cidade}/${address?.estado}")
-                    binding.cep.setText(" - ${address?.cep}")
-                    binding.mensagemDeErro.visibility = View.INVISIBLE
-                    binding.cardView.visibility = View.VISIBLE
 
-
-                } else{
-                    binding.mensagemDeErro.visibility = View.VISIBLE
-                }
             }
-            val view: View? = currentFocus
-
-            if (view != null) {
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(view.windowToken, 0)
-            }
+            fechar_teclado()
 
 
         }
 
         setContentView(binding.root)
 
+    }
+    private fun fechar_teclado() {
+        val view: View? = currentFocus
+
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }
