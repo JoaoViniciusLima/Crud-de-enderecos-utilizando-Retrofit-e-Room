@@ -18,44 +18,79 @@
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cadastro de endereços"
+        android:text="Editar endereço"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editTextCep" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <EditText
+        android:id="@+id/editTextRua"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="Digite a rua"
+        android:paddingLeft="8dp"
+        android:textColor="#3C3939"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Title" />
 
     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/editTextCep"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="100dp"
-        android:hint="Digite o cep do endereço"
+        android:layout_marginTop="10dp"
+        android:hint="Digite o  cep"
         android:paddingLeft="8dp"
         android:inputType="number"
         android:textColor="#3C3939"
         app:mask="_____-___"
         app:maskCharacter="_"
         app:maskStyle="completable"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/editTextRua" />
 
-    <TextView
-        android:id="@+id/errorMenssage"
+    <EditText
+        android:id="@+id/editTextBairro"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:hint="Digite o bairro"
         android:paddingLeft="8dp"
-        android:text="O cep informado não foi encontrado"
-        android:visibility="invisible"
-        android:textColor="#FF0000"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#3C3939"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCep"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextCep" />
+
+    <EditText
+        android:id="@+id/editTextCidade"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="Digite a cidade"
+        android:paddingLeft="8dp"
+        android:textColor="#3C3939"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextBairro" />
+
+    <EditText
+        android:id="@+id/editTextEstado"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="Digite o estado"
+        android:paddingLeft="8dp"
+        android:textColor="#3C3939"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextCidade" />
 
     <Button
         android:id="@+id/confirmButton"
@@ -69,6 +104,6 @@
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCep" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEstado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

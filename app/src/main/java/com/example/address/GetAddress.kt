@@ -3,7 +3,6 @@ package com.example.address
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.example.address.databinding.GetCepBinding
 import kotlinx.coroutines.Dispatchers
@@ -13,63 +12,54 @@ import kotlinx.coroutines.withContext
 import com.example.address.domain.Address
 import com.example.address.service.AddressService
 import com.example.address.api.RetrofitHelper
-import kotlinx.coroutines.CoroutineScope
-import android.view.inputmethod.InputMethodManager
-import android.content.Context
+import com.example.address.database.DatabaseHelper
 
-//import com.example.haro_agenda.databinding.FormNotaBinding
+
 class GetAddress: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
 
         val binding = GetCepBinding.inflate(layoutInflater)
 
-        val button = binding.botao
+        val back = binding.back
+        back.setOnClickListener{
+            val intent = Intent(this, ListAddress::class.java)
+            startActivity(intent)
+        }
+
+        val button = binding.confirmButton
 
         button.setOnClickListener{
 
             var cep = binding.editTextCep.text.toString()
             var address : Address?
             val scope = MainScope()
+            val dao = DatabaseHelper.getInstance(this).addressDao()
 
-                scope.launch {
+            scope.launch {
                     try {
                     withContext(Dispatchers.IO) {
                         address =
                             AddressService(RetrofitHelper().addressApi()).findAddressByCep(cep)
+                        if (address != null) {
+                            address!!.cep = address!!.cep.substring(0, 5) + "-" + address!!.cep.substring(5, address!!.cep.length)
+                            dao.insert(address!!)
+                        }
                     }
+
                     if (address != null) {
-                        binding.rua.setText(address?.rua)
-                        binding.bairro.setText(" - ${address?.bairro}")
-                        binding.cidade.setText("${address?.cidade}/${address?.estado}")
-                        binding.cep.setText(" - ${address?.cep}")
-                        binding.mensagemDeErro.visibility = View.INVISIBLE
-                        binding.cardView.visibility = View.VISIBLE
-
-
+                        val intent = Intent(this@GetAddress, ListAddress::class.java)
+                        startActivity(intent)
                     } else {
-                        binding.mensagemDeErro.visibility = View.VISIBLE
+                        binding.errorMenssage.visibility = View.VISIBLE
                     }
+
                     }catch (erro: Exception){
                         print(erro)
-                }
-
+                    }
             }
-            fechar_teclado()
-
-
         }
 
         setContentView(binding.root)
-
-    }
-    private fun fechar_teclado() {
-        val view: View? = currentFocus
-
-        if (view != null) {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
     }
 }
