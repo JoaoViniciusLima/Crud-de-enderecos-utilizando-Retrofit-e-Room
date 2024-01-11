@@ -3,6 +3,7 @@ package com.example.address
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.address.databinding.GetCepBinding
 import kotlinx.coroutines.Dispatchers
@@ -54,8 +55,8 @@ class GetAddress: AppCompatActivity() {
                         binding.errorMenssage.visibility = View.VISIBLE
                     }
 
-                    }catch (erro: Exception){
-                        print(erro)
+                    }catch (error: Exception){
+                        Log.d("error", error.toString())
                     }
             }
         }
