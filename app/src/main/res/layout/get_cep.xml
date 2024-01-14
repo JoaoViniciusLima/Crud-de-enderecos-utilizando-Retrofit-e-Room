@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GetAddress"
     android:padding="16dp">
 
     <ImageView
@@ -28,21 +29,18 @@
         app:layout_constraintBottom_toTopOf="@id/editTextCep" />
 
     <com.santalu.maskara.widget.MaskEditText
+        style="@style/editText"
         android:id="@+id/editTextCep"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
         android:layout_marginBottom="100dp"
         android:hint="Digite o cep do endereço"
-        android:paddingLeft="8dp"
         android:inputType="number"
         android:textColor="#3C3939"
         app:mask="_____-___"
         app:maskCharacter="_"
         app:maskStyle="completable"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/errorMenssage"
