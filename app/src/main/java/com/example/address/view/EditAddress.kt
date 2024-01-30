@@ -1,10 +1,10 @@
-package com.example.address
+package com.example.address.view
 
 import android.os.Build
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.address.MainActivity
 import com.example.address.database.DatabaseHelper
 import com.example.address.databinding.EditAddressBinding
 import com.example.address.domain.Address
@@ -35,7 +35,7 @@ class EditAddress: AppCompatActivity() {
 
         val back = binding.back
         back.setOnClickListener{
-            val intent = Intent(this, ListAddress::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -59,7 +59,7 @@ class EditAddress: AppCompatActivity() {
                         dao.update(address)
                     }
 
-                    val intent = Intent(this@EditAddress, ListAddress::class.java)
+                    val intent = Intent(this@EditAddress, MainActivity::class.java)
                     startActivity(intent)
 
                     }catch (erro: Exception){

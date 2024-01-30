@@ -4,8 +4,6 @@
 <resources>
     <style name="editText">
         <item name="android:layout_marginTop">10dp</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:paddingLeft">8dp</item>
@@ -22,18 +20,30 @@
         <item name="android:textColorHint">#ffffff</item>
         <item name="android:textSize">20sp</item>
         <item name="backgroundTint">@null</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
 
     </style>
 
     <style name="backButton">
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
         <item name="android:src">@drawable/baseline_arrow_back</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
 
+    </style>
+
+    <style name="addressInformation">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/purple_500</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:elevation">4dp</item>
     </style>
     
 </resources>

@@ -2,12 +2,13 @@ package com.example.address
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ListView
+import com.example.address.adapters.Adapter
 import com.example.address.database.DatabaseHelper
+import com.example.address.view.GetAddress
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ListAddress : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list)
@@ -17,7 +18,7 @@ class ListAddress : AppCompatActivity() {
         val dao = DatabaseHelper.getInstance(this).addressDao()
         var adresses = dao.findAll()
 
-        var listView = findViewById<ListView>(R.id.lista)
+        var listView = findViewById<ListView>(R.id.list)
 
         var adapter = Adapter(this, adresses.toMutableList())
 

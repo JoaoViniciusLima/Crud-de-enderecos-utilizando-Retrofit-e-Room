@@ -4,35 +4,53 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".EditAddress"
-    android:padding="16dp">
+    tools:context=".view.EditAddress">
 
-    <ImageView
-        style="@style/backButton"
-        android:id="@+id/back"
-        tools:ignore="MissingConstraints" />
+    <Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/toolbar"
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/Title"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/backButton"
+                android:id="@+id/back"
+                tools:ignore="MissingConstraints"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar endereço"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+    </Toolbar>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Editar endereço"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
 
     <EditText
         style="@style/editText"
         android:id="@+id/editTextRua"
         android:hint="Digite a rua"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/Title"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="30dp" />
 
     <com.santalu.maskara.widget.MaskEditText
         style="@style/editText"
@@ -42,34 +60,28 @@
         app:mask="_____-___"
         app:maskCharacter="_"
         app:maskStyle="completable"
-        app:layout_constraintTop_toBottomOf="@id/editTextRua"
         tools:ignore="MissingConstraints" />
 
     <EditText
         style="@style/editText"
         android:id="@+id/editTextBairro"
         android:hint="Digite o bairro"
-        app:layout_constraintTop_toBottomOf="@id/editTextCep"
         tools:ignore="MissingConstraints" />
 
     <EditText
         style="@style/editText"
         android:id="@+id/editTextCidade"
-        android:hint="Digite a cidade"
-        app:layout_constraintTop_toBottomOf="@id/editTextBairro"
-        tools:ignore="MissingConstraints" />
+        android:hint="Digite a cidade" />
 
     <EditText
         style="@style/editText"
         android:id="@+id/editTextEstado"
-        android:hint="Digite o estado"
-        app:layout_constraintTop_toBottomOf="@id/editTextCidade"
-        tools:ignore="MissingConstraints" />
+        android:hint="Digite o estado" />
 
     <Button
         style="@style/button"
-        android:id="@+id/confirmButton"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEstado"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/confirmButton" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

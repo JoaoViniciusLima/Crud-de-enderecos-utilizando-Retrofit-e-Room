@@ -1,10 +1,11 @@
-package com.example.address
+package com.example.address.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.example.address.MainActivity
 import com.example.address.databinding.GetCepBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -24,7 +25,7 @@ class GetAddress: AppCompatActivity() {
 
         val back = binding.back
         back.setOnClickListener{
-            val intent = Intent(this, ListAddress::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -32,7 +33,7 @@ class GetAddress: AppCompatActivity() {
 
         button.setOnClickListener{
 
-            var cep = binding.editTextCep.text.toString()
+            val cep = binding.editTextCep.text.toString()
             var address : Address?
             val scope = MainScope()
             val dao = DatabaseHelper.getInstance(this).addressDao()
@@ -49,7 +50,7 @@ class GetAddress: AppCompatActivity() {
                     }
 
                     if (address != null) {
-                        val intent = Intent(this@GetAddress, ListAddress::class.java)
+                        val intent = Intent(this@GetAddress, MainActivity::class.java)
                         startActivity(intent)
                     } else {
                         binding.errorMenssage.visibility = View.VISIBLE

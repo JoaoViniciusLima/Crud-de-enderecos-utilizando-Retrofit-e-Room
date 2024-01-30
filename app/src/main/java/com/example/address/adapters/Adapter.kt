@@ -1,4 +1,4 @@
-package com.example.address
+package com.example.address.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -10,9 +10,12 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.cardview.widget.CardView
+import com.example.address.R
 import com.example.address.database.DatabaseHelper
+import com.example.address.databinding.AddressCardBinding
+import com.example.address.databinding.GetCepBinding
 import com.example.address.domain.Address
+import com.example.address.view.EditAddress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -40,13 +43,11 @@ class Adapter(val context: Context, val address: MutableList<Address>) : BaseAda
 
 
         val inflater = LayoutInflater.from(context)
+        val binding = AddressCardBinding.inflate(inflater, parent, false)
 
-
-        val rowViewCard = inflater.inflate(R.layout.address_card, parent, false)
-
-        var rua = rowViewCard.findViewById<TextView>(R.id.rua)
-        var bairro = rowViewCard.findViewById<TextView>(R.id.bairro)
-        var cidadeEstadoCep = rowViewCard.findViewById<TextView>(R.id.cidade_estado_cep)
+        val rua = binding.rua
+        val bairro = binding.bairro
+        val cidadeEstadoCep = binding.cidadeEstadoCep
 
         if(address[position].rua.isNotEmpty()){
             rua.text = address[position].rua
@@ -63,7 +64,7 @@ class Adapter(val context: Context, val address: MutableList<Address>) : BaseAda
 
         cidadeEstadoCep.text = "${address[position].cidade}/${address[position].estado} - ${address[position].cep}"
 
-        val popup = rowViewCard.findViewById<ImageView>(R.id.popup)
+        val popup = binding.popup
         popup.setOnClickListener{ view ->
             val popupMenu = PopupMenu(context, view)
             val inflater = popupMenu.menuInflater
@@ -101,6 +102,6 @@ class Adapter(val context: Context, val address: MutableList<Address>) : BaseAda
         }
 
 
-        return rowViewCard
+        return binding.root
     }
 }
